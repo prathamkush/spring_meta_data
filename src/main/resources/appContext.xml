@@ -45,4 +45,5 @@
     <context:component-scan base-package="com.springmetadata.springmetadata.componentScan"/>
 
 
+
 </beans>
