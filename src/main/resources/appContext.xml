@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--Meta Data for validating the tgs whihc are going to be used in this file -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                          https://www.springframework.org/schema/beans/spring-beans.xsd
+                          http://www.springframework.org/schema/context
+                          https://www.springframework.org/schema/context/spring-context.xsd"
+>
+<!--    ContentFiltering-->
+    <bean id="contentFiltering"
+          class="com.springmetadata.springmetadata.configuration.ContentFiltering"
+    >
+    </bean>
+
+
+
+<!--    MultiFiltering-->
+    <bean id="multiFiltering"
+          class="com.springmetadata.springmetadata.configuration.MultiFiltering"
+    >
+    </bean>
+
+<!--    Component Scan bean-->
+    <bean id="checkComponentScan"
+          class="com.springmetadata.springmetadata.componentScan.CheckComponentScan"
+    >
+    </bean>
+
+
+<!--    RecommendedMovieImplementation-->
+    <bean id="recommendedMovieImplementation"
+          class="com.springmetadata.springmetadata.configuration.RecommendedMovieImplemenation"
+    >
+<!--        CONSTRUCTOR DEPENDENCY INJECTION-->
+<!--        <constructor-arg ref="contentFiltering" />-->
+
+<!--        PROPERTY DEPENDENCY INJECTION (setter is called here)-->
+        <property name="filter" ref="checkComponentScan"/>
+    </bean>
+
+
+    <!--     Enabling Component Scan-->
+    <context:component-scan base-package="com.springmetadata.springmetadata.componentScan"/>
+
+
+</beans>
